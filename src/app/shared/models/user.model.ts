@@ -1,19 +1,9 @@
-export interface User{
-    id: number;
-    nom: string;
-    prenom: string;
-    email: string;
-    password: string;
-    role: Role;
-    createdAt: Date;
-    updatedAt: Date;
-    
-}
+import { UserRole } from './absence.model';
 
-export type Role ="Admin";
-
-export interface LoginResponse{
-    message: string;
-    success: boolean;
-    data: User|null;
+export interface LoginResponse {
+  token: string;
+  email: string;
+  matricule: string;
+  role: UserRole;
+  type: string ;
 }
