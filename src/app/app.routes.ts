@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
-import { PageAbscenceComponent } from './pages/abscence/page-abscence/page-abscence.component';
-import { PageJustificationComponent } from './pages/abscence/page-justification/page-justification.component';
+import { PageAbscenceComponent } from './components/page/absences/page-abscence/page-abscence.component';
+import { PageJustificationComponent } from './components/page/absences/page-justification/page-justification.component';
+import { AbsenceComponent } from './components/page/absences/absence.component';
 
 export const routes: Routes = [
     {
         path: 'abscence',
-        component:PageAbscenceComponent ,
+        component: AbsenceComponent ,
         children: [
             {
                 path: '',
