@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AbsenceAndEtudiantResponse } from '../../models/absence.model';
+import { RestResponse } from '../../models/rest-response.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AbsenceService {
   private apiUrl = 'http://localhost:8080/api/web/absences';
@@ -12,8 +13,8 @@ export class AbsenceService {
   constructor(private http: HttpClient) {}
 
   // Récupérer toutes les absences pour l'admin
-  getAllAbsences(): Observable<AbsenceAndEtudiantResponse[]> {
-    return this.http.get<AbsenceAndEtudiantResponse[]>(this.apiUrl);
+  getAllAbsences(): Observable<RestResponse<AbsenceAndEtudiantResponse[]>> {
+    return this.http.get<RestResponse<AbsenceAndEtudiantResponse[]>>(this.apiUrl);
   }
 
   // Récupérer les absences filtrées par état (optionnel)
