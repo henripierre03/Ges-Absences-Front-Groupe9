@@ -28,8 +28,8 @@ isProcessing: any;
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.justificationService.getJustificationById(id).subscribe(j => {
-        this.justification = j;
+      this.justificationService.getJustificationById(id).subscribe(response => {
+        this.justification = response;
       });
     }
   }
