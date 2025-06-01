@@ -30,8 +30,12 @@
 </nav>
 
 <aside>
-  <div class="flex flex-col m-auto items-center justify-center space-y-4 fixed bottom-60 left-0 z-50 bg-transparent  p-4">
-    <div class="cursor-pointer hover:text-primary bg-primary p-2 rounded-full transition-colors duration-300">
+  <div
+    class="flex flex-col m-auto items-center justify-center space-y-4 fixed bottom-60 left-0 z-50 bg-transparent p-4"
+  >
+    <div
+      class="cursor-pointer  bg-primary p-2 rounded-full transition-colors duration-300"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -50,7 +54,9 @@
         />
       </svg>
     </div>
-    <div class="cursor-pointer hover:text-primary bg-primary p-2 rounded-full transition-colors duration-300">
+    <div
+      class="cursor-pointer  bg-primary p-2 rounded-full transition-colors duration-300"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -69,7 +75,9 @@
         />
       </svg>
     </div>
-    <div class="cursor-pointer hover:text-primary bg-primary p-2 rounded-full transition-colors duration-300">
+    <div
+      class="cursor-pointer  bg-primary p-2 rounded-full transition-colors duration-300"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -88,7 +96,10 @@
         />
       </svg>
     </div>
-    <div class="cursor-pointer fixed bottom-0 hover:text-primary rounded-t-full bg-primary p-3  transition-colors duration-300">
+    <button
+      (click)="onLogout()"
+      class="cursor-pointer fixed bottom-0  rounded-t-full bg-primary p-3 transition-colors duration-300"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -106,7 +117,6 @@
           d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
         />
       </svg>
-    </div>
+    </button>
   </div>
 </aside>
-
