@@ -1,4 +1,4 @@
-<body class="bg-white font-sans p-6">
+<div class="bg-white font-sans p-6">
   <br /><br /><br /><br />
   <div class="max-w-6xl px-4 mx-auto">
     <h1 class="text-xl font-bold mb-6">
@@ -61,7 +61,8 @@
           </tr>
         </thead>
         <tbody class="text-sm text-gray-700">
-          <!-- Ligne Présent -->
+          @for (response of responses?.result; track response.id){ @if
+          (response.typeAbsence === 'PRESENCE') {
           <tr class="border-t hover:bg-gray-50">
             <td class="px-4 py-2">Jane Cooper</td>
             <td class="px-4 py-2">Microsoft</td>
@@ -80,8 +81,29 @@
               </button>
             </td>
           </tr>
-
-          <!-- Ligne Absent + Justification Disponible -->
+          } @if (response.typeAbsence == 'RETARD') {
+          <!-- Ligne En Retard -->
+          <tr class="border-t hover:bg-gray-50">
+            <td class="px-4 py-2">Jerome Bell</td>
+            <td class="px-4 py-2">Google</td>
+            <td class="px-4 py-2">7845121355</td>
+            <td class="px-4 py-2">jerome&#64;google.com</td>
+            <td class="px-4 py-2">Cisco</td>
+            <td class="px-4 py-2">ZDAZD5</td>
+            <td class="px-4 py-2">L3</td>
+            <td class="px-4 py-2">GLRS</td>
+            <td class="px-4 py-2">A</td>
+            <td class="px-4 py-2">
+              <button
+                class="bg-orange-200 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full hover:bg-orange-300"
+              >
+                En retard
+              </button>
+            </td>
+          </tr>
+          } 
+          @if (response.typeAbsence == 'ABSENCE') {
+            <!-- Ligne Absent + Justification Disponible -->
           <tr class="border-t hover:bg-gray-50">
             <td class="px-4 py-2">Cisse</td>
             <td class="px-4 py-2">Aly</td>
@@ -105,48 +127,12 @@
               </button>
             </td>
           </tr>
+          }
+        }
 
-          <!-- Ligne En Retard -->
-          <tr class="border-t hover:bg-gray-50">
-            <td class="px-4 py-2">Jerome Bell</td>
-            <td class="px-4 py-2">Google</td>
-            <td class="px-4 py-2">7845121355</td>
-            <td class="px-4 py-2">jerome&#64;google.com</td>
-            <td class="px-4 py-2">Cisco</td>
-            <td class="px-4 py-2">ZDAZD5</td>
-            <td class="px-4 py-2">L3</td>
-            <td class="px-4 py-2">GLRS</td>
-            <td class="px-4 py-2">A</td>
-            <td class="px-4 py-2">
-              <button
-                class="bg-orange-200 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full hover:bg-orange-300"
-              >
-                En retard
-              </button>
-            </td>
-          </tr>
-
-          <tr class="border-t hover:bg-gray-50">
-            <td class="px-4 py-2">Ahi</td>
-            <td class="px-4 py-2">Marc</td>
-            <td class="px-4 py-2">7845121355</td>
-            <td class="px-4 py-2">marc&#64;ahi.com</td>
-            <td class="px-4 py-2">Cisco</td>
-            <td class="px-4 py-2">ISM4532</td>
-            <td class="px-4 py-2">L3</td>
-            <td class="px-4 py-2">GLRS</td>
-            <td class="px-4 py-2">A</td>
-            <td class="px-4 py-2">
-              <button
-                class="bg-green-200 text-green-800 text-xs font-semibold px-3 py-1 rounded-full hover:bg-green-300"
-              >
-                Présent
-              </button>
-            </td>
-          </tr>
 
           <!-- Ligne Absent + Justification Invalide -->
-          <tr class="border-t hover:bg-gray-50">
+          <!-- <tr class="border-t hover:bg-gray-50">
             <td class="px-4 py-2">Marvin McKinney</td>
             <td class="px-4 py-2">Tesla</td>
             <td class="px-4 py-2">76513215315</td>
@@ -168,7 +154,7 @@
                 Justification Invalide
               </button>
             </td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
@@ -185,4 +171,4 @@
       <button class="px-2 py-1 rounded bg-gray-200">&gt;</button>
     </div>
   </div>
-</body>
+</div>

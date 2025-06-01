@@ -13,7 +13,7 @@ export class PageAbscenceComponent implements OnInit {
   constructor(private readonly absenceService: AbsenceService) {}
   responses?: RestResponse<AbsenceAndEtudiantResponse[]>;
   ngOnInit(): void {
-    this.absenceService.getAll().subscribe({
+    this.absenceService.getAllAbsences().subscribe({
       next: (data) => (this.responses = data),
       error: (error) => console.error(error),
     });
