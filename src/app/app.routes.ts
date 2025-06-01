@@ -11,13 +11,14 @@ export const routes: Routes = [
         path: 'absence',
         component: AbsenceComponent ,
         canActivate:[AuthGuard],
+
         children: [
             {
                 path: '',
                 component: PageAbscenceComponent,
             },
             {
-                path:"justification/:absenceId",
+                path: "justification/:abscenceId",
                 component: PageJustificationComponent
             }
         ]
@@ -37,4 +38,17 @@ export const routes: Routes = [
         redirectTo: '/security',
         pathMatch: 'full' 
     },
+    {
+        redirectTo: '/abscence',
+        pathMatch: 'full'
+    },
+    {
+        path: 'justification/:id',
+        component: PageJustificationComponent
+    },
+
+    {
+        path: '**',
+        redirectTo: '/abscence',
+    }
 ];

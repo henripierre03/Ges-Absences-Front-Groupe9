@@ -1,1 +1,947 @@
-<p>page-justification works!</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire d'Absences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .app-title {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .print-icon {
+            width: 24px;
+            height: 24px;
+            background: #666;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        /* Student Info Card */
+        .student-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .student-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .student-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid #8B4513;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            font-size: 30px;
+        }
+
+        .student-name {
+            flex: 1;
+        }
+
+        .student-name h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .student-name p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .student-details {
+            display: grid;
+            gap: 15px;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #333;
+            min-width: 80px;
+        }
+
+        .detail-value {
+            color: #666;
+            flex: 1;
+        }
+
+        /* Course Info */
+        .course-info {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            min-width: 200px;
+        }
+
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .course-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .course-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .course-value {
+            color: #666;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .action-btn:hover {
+            background: #555;
+            transform: translateY(-1px);
+        }
+
+        .action-btn.validate {
+            background: #28a745;
+        }
+
+        .action-btn.validate:hover {
+            background: #218838;
+        }
+
+        .action-btn.invalidate {
+            background: #dc3545;
+        }
+
+        .action-btn.invalidate:hover {
+            background: #c82333;
+        }
+
+        .action-btn .badge {
+            background: #666;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .action-btn.validate .badge {
+            background: #1e7e34;
+        }
+
+        .action-btn.invalidate .badge {
+            background: #bd2130;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 70px;
+            bottom: 0;
+            width: 60px;
+            background: #FF8C00;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            gap: 15px;
+        }
+
+        .sidebar-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar-icon:hover,
+        .sidebar-icon.active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .back-btn {
+            position: fixed;
+            left: 10px;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            background: #FF8C00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .main-content {
+            margin-left: 80px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .justification-content {
+            margin-bottom: 20px;
+        }
+
+        .justification-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FF8C00;
+            position: relative;
+        }
+
+        .justification-date {
+            font-weight: 600;
+            color: #FF8C00;
+            margin-bottom: 8px;
+        }
+
+        .justification-reason {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .justification-status {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .validation-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .validate-btn, .invalidate-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .validate-btn {
+            background: #28a745;
+            color: white;
+        }
+
+        .validate-btn:hover {
+            background: #218838;
+        }
+
+        .invalidate-btn {
+            background: #dc3545;
+            color: white;
+        }
+
+        .invalidate-btn:hover {
+            background: #c82333;
+        }
+
+        .no-justification {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .no-justification-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: #28a745;
+        }
+
+        .notification.error {
+            background: #dc3545;
+        }
+
+        .notification.info {
+            background: #17a2b8;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .course-info {
+                min-width: auto;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .action-buttons {
+                justify-content: center;
+            }
+
+            .action-btn {
+                flex: 1;
+                min-width: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-title">
+            Justification d'Absence de :
+            <div class="print-icon">🖨</div>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Student Information Card -->
+            <div class="student-card">
+                <div class="student-header">
+                    <div class="student-avatar">👤</div>
+                    <div class="student-name">
+                        <h2>Nom: Cisse</h2>
+                        <p>Prénom: Aly Mamour</p>
+                    </div>
+                </div>
+
+                <div class="student-details">
+                    <div class="detail-row">
+                        <span class="detail-label">E-mail:</span>
+                        <span class="detail-value">{{ justification.email }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Numéro:</span>
+                        <span class="detail-value">{{ justification.numero }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Matricule:</span>
+                        <span class="detail-value">{{ justification.matricule }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Niveau:</span>
+                        <span class="detail-value">{{ justification.niveau }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Filière:</span>
+                        <span class="detail-value">{{ justification.filiere }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Classe:</span>
+                        <span class="detail-value">{{ justification.classe }}</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn">
+                        Voir Justification 
+                        <span class="badge"></span>
+                    </button>
+                    <button class="action-btn">
+
+                        Voir Pièce Jointe 
+                        <span class="badge">0</span>
+                    </button>
+                    <button class="action-btn validate">
+                        ✓ Valider Absences
+                        <span class="badge" id="pendingCount">0</span>
+                    </button>
+                    <button class="action-btn invalidate">
+                        ✗ Invalider Absences
+                        <span class="badge" id="approvedCount">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Course Information -->
+            <div class="course-info">
+                <div class="course-item">
+                    <span class="course-label">Cours:</span>
+                    <span class="course-value">{{ justification.cours }}</span>
+                </div>
+                <div class="course-item">
+                    <span class="course-label">Salle:</span>
+                    <span class="course-value">{{ justification.salle }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-btn">←</div>
+
+    <!-- Modal pour Voir Justification -->
+    <div id="justificationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Justifications d'Absence - Aly Mamour Cisse</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="justification-content" id="justificationContent">
+                <!-- Le contenu sera généré dynamiquement -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour Voir Pièce Jointe -->
+    <div id="pieceJointeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Pièces Jointes - Aly Mamour Cisse</h3>
+                <button class="close-btn" onclick="closePieceJointeModal()">&times;</button>
+            </div>
+            <div class="justification-content" id="pieceJointeContent">
+                <!-- Le contenu sera généré dynamiquement -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour Validation -->
+    <div id="validationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="validationModalTitle">Validation des Justifications</h3>
+                <button class="close-btn" onclick="closeValidationModal()">&times;</button>
+            </div>
+            <div class="justification-content" id="validationContent">
+                <!-- Le contenu sera généré dynamiquement -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <span id="notificationMessage"></span>
+    </div>
+
+    <script>
+        // Données simulées pour les justifications
+        let justificationsData = [
+            {
+                id: 1,
+                date: "15 Mai 2025",
+                reason: "Rendez-vous médical urgent",
+                status: "approved",
+                statusText: "Approuvé",
+                details: "Consultation chez le médecin généraliste pour contrôle de routine."
+            },
+            {
+                id: 2,
+                date: "28 Avril 2025",
+                reason: "Maladie - Grippe",
+                status: "pending",
+                statusText: "En attente",
+                details: "Absence pour cause de grippe saisonnière avec certificat médical."
+            },
+            {
+                id: 3,
+                date: "12 Mars 2025",
+                reason: "Problème familial",
+                status: "rejected",
+                statusText: "Rejeté",
+                details: "Absence non justifiée suffisamment."
+            },
+            {
+                id: 4,
+                date: "05 Mars 2025",
+                reason: "Examen médical",
+                status: "pending",
+                statusText: "En attente",
+                details: "Consultation spécialisée programmée."
+            }
+        ];
+
+        const piecesJointesData = [
+            {
+                name: "Certificat_Medical_15_Mai_2025.pdf",
+                type: "PDF",
+                size: "245 KB",
+                date: "15 Mai 2025"
+            },
+            {
+                name: "Justificatif_Medical_28_Avril.pdf",
+                type: "PDF",
+                size: "189 KB",
+                date: "28 Avril 2025"
+            }
+        ];
+
+        // Fonction pour afficher les notifications
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notificationMessage');
+            
+            notificationMessage.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Fonction pour mettre à jour les compteurs
+        function updateCounters() {
+            const pendingCount = justificationsData.filter(j => j.status === 'pending').length;
+            const approvedCount = justificationsData.filter(j => j.status === 'approved').length;
+            const rejectedCount = justificationsData.filter(j => j.status === 'rejected').length;
+            
+            document.getElementById('pendingCount').textContent = pendingCount;
+            document.getElementById('approvedCount').textContent = approvedCount;
+            
+            // Mettre à jour les badges des autres boutons
+            const justificationBadge = document.querySelector('.action-btn:nth-child(1) .badge');
+            const pieceJointeBadge = document.querySelector('.action-btn:nth-child(2) .badge');
+            
+            if (justificationBadge) {
+                justificationBadge.textContent = justificationsData.length;
+            }
+            if (pieceJointeBadge) {
+                pieceJointeBadge.textContent = piecesJointesData.length;
+            }
+        }
+
+        // Fonction pour valider une justification
+        function validateJustification(id) {
+            const justification = justificationsData.find(j => j.id === id);
+            if (justification && justification.status === 'pending') {
+                justification.status = 'approved';
+                justification.statusText = 'Approuvé';
+                updateCounters();
+                showValidationModal('validate');
+                showNotification(`Justification du ${justification.date} validée avec succès`, 'success');
+            }
+        }
+
+        // Fonction pour invalider une justification
+        function invalidateJustification(id) {
+            const justification = justificationsData.find(j => j.id === id);
+            if (justification && justification.status === 'approved') {
+                justification.status = 'rejected';
+                justification.statusText = 'Rejeté';
+                updateCounters();
+                showValidationModal('invalidate');
+                showNotification(`Justification du ${justification.date} invalidée`, 'error');
+            }
+        }
+
+        // Fonction pour valider toutes les justifications en attente
+        function validateAllPending() {
+            const pendingJustifications = justificationsData.filter(j => j.status === 'pending');
+            if (pendingJustifications.length === 0) {
+                showNotification('Aucune justification en attente à valider', 'info');
+                return;
+            }
+            
+            pendingJustifications.forEach(justification => {
+                justification.status = 'approved';
+                justification.statusText = 'Approuvé';
+            });
+            
+            updateCounters();
+            closeValidationModal();
+            showNotification(`${pendingJustifications.length} justification(s) validée(s) avec succès`, 'success');
+        }
+
+        // Fonction pour invalider toutes les justifications approuvées
+        function invalidateAllApproved() {
+            const approvedJustifications = justificationsData.filter(j => j.status === 'approved');
+            if (approvedJustifications.length === 0) {
+                showNotification('Aucune justification approuvée à invalider', 'info');
+                return;
+            }
+            
+            approvedJustifications.forEach(justification => {
+                justification.status = 'rejected';
+                justification.statusText = 'Rejeté';
+            });
+            
+            updateCounters();
+            closeValidationModal();
+            showNotification(`${approvedJustifications.length} justification(s) invalidée(s)`, 'error');
+        }
+
+        // Fonction pour afficher le modal de validation
+        function showValidationModal(action) {
+            const modal = document.getElementById('validationModal');
+            const content = document.getElementById('validationContent');
+            const title = document.getElementById('validationModalTitle');
+            
+            let justificationsToShow = [];
+            let actionText = '';
+            let buttonText = '';
+            let buttonClass = '';
+            let buttonAction = '';
+            
+            if (action === 'validate') {
+                justificationsToShow = justificationsData.filter(j => j.status === 'pending');
+                actionText = 'Validation';
+                buttonText = '✓ Valider Toutes';
+                buttonClass = 'validate-btn';
+                buttonAction = 'validateAllPending()';
+                title.textContent = 'Valider les Justifications en Attente';
+            } else if (action === 'invalidate') {
+                justificationsToShow = justificationsData.filter(j => j.status === 'approved');
+                actionText = 'Invalidation';
+                buttonText = '✗ Invalider Toutes';
+                buttonClass = 'invalidate-btn';
+                buttonAction = 'invalidateAllApproved()';
+                title.textContent = 'Invalider les Justifications Approuvées';
+            }
+            
+            if (justificationsToShow.length === 0) {
+                const noDataMessage = action === 'validate' ? 
+                    'Aucune justification en attente de validation' : 
+                    'Aucune justification approuvée à invalider';
+                    
+                content.innerHTML = `
+                    <div class="no-justification">
+                        <div class="no-justification-icon">${action === 'validate' ? '⏳' : '✅'}</div>
+                        <h4>${noDataMessage}</h4>
+                        <p>Toutes les justifications ont déjà été traitées.</p>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <button class="${buttonClass}" onclick="${buttonAction}" style="width: 100%; padding: 12px; font-size: 14px;">
+                            ${buttonText} (${justificationsToShow.length})
+                        </button>
+                    </div>
+                    ${justificationsToShow.map(justification => `
+                        <div class="justification-item">
+                            <div class="justification-date">${justification.date}</div>
+                            <div class="justification-reason"><strong>Motif:</strong> ${justification.reason}</div>
+                            <div><strong>Détails:</strong> ${justification.details}</div>
+                            <div style="margin-top: 8px;">
+                                <span class="justification-status status-${justification.status}">
+                                    ${justification.statusText}
+                                </span>
+                            </div>
+                            <div class="validation-buttons">
+                                ${action === 'validate' ? 
+                                    `<button class="validate-btn" onclick="validateJustification(${justification.id})">✓ Valider</button>` :
+                                    `<button class="invalidate-btn" onclick="invalidateJustification(${justification.id})">✗ Invalider</button>`
+                                }
+                            </div>
+                        </div>
+                    `).join('')}
+                `;
+            }
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fonctions pour gérer les modals existants
+        function showJustificationModal() {
+            const modal = document.getElementById('justificationModal');
+            const content = document.getElementById('justificationContent');
+            
+            if (justificationsData.length === 0) {
+                content.innerHTML = `
+                    <div class="no-justification">
+                        <div class="no-justification-icon">📋</div>
+                        <h4>Aucune justification trouvée</h4>
+                        <p>Aucune justification d'absence n'a été enregistrée pour cet étudiant.</p>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = justificationsData.map(justification => `
+                    <div class="justification-item">
+                        <div class="justification-date">${justification.date}</div>
+                        <div class="justification-reason"><strong>Motif:</strong> ${justification.reason}</div>
+                        <div><strong>Détails:</strong> ${justification.details}</div>
+                        <div style="margin-top: 8px;">
+                            <span class="justification-status status-${justification.status}">
+                                ${justification.statusText}
+                            </span>
+                        </div>
+                        <div class="validation-buttons">
+                            ${justification.status === 'pending' ? 
+                                `<button class="validate-btn" onclick="validateJustification(${justification.id})">✓ Valider</button>` : ''
+                            }
+                            ${justification.status === 'approved' ? 
+                                `<button class="invalidate-btn" onclick="invalidateJustification(${justification.id})">✗ Invalider</button>` : ''
+                            }
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showPieceJointeModal() {
+            const modal = document.getElementById('pieceJointeModal');
+            const content = document.getElementById('pieceJointeContent');
+            
+            content.innerHTML = piecesJointesData.map(pieceJointe => `
+                <div class="justification-item">
+                    <div class="justification-name">${pieceJointe.name}</div>
+                    <div class="justification-type"><strong>Type:</strong> ${pieceJointe.type}</div>
+                    <div class="justification-size"><strong>Taille:</strong> ${pieceJointe.size}</div>
+                    <div class="justification-date"><strong>Date:</strong> ${pieceJointe.date}</div>
+                </div>
+            `).join('');
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+    </script>
