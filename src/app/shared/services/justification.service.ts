@@ -3,21 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Justification } from '../models/justification.model';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class JustificationService {
   private apiUrl = 'http://localhost:8080/api/justifications';
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Justification[]> {
-    return this.http.get<Justification[]>(this.apiUrl);
+  getJustificationById(id: string): Observable<Justification> {
+    return this.http.get<Justification>(`${this.apiUrl}/${id}`);
   }
 
-  valider(id: string): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}/${id}/valider`, {});
+  validerJustification(id: string): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}/valider`, {});
   }
 
-  invalider(id: string): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}/${id}/refuser`, {});
+  rejeterJustification(id: string): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${id}/rejeter`, {});
   }
 }

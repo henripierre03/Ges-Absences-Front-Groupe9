@@ -1,8 +1,17 @@
 export interface Justification {
   id: string;
-  etudiantNom: string;
+  prenom: string;
+  nom: string;
+  email: string;
+  numero: string;
+  matricule: string;
+  niveau: string;
+  filiere: string;
+  classe: string;
+  cours: string;
+  salle: string;
+  justificationTexte: string;
+  fichierUrl: string;
   date: string;
-  raison: string;
-  fichier?: string; // lien vers un fichier justificatif (ex : PDF/image)
-  statut: 'EN_ATTENTE' | 'VALIDÉE' | 'REFUSÉE';
+  etat: 'en_attente' | 'valide' | 'refuse';
 }

@@ -6,14 +6,14 @@ import { AbsenceComponent } from './components/page/absences/absence.component';
 export const routes: Routes = [
     {
         path: 'abscence',
-        component: AbsenceComponent ,
+        component: AbsenceComponent,
         children: [
             {
                 path: '',
                 component: PageAbscenceComponent
             },
             {
-                path:"justification/:abscenceId",
+                path: "justification/:abscenceId",
                 component: PageJustificationComponent
             }
         ]
@@ -31,8 +31,13 @@ export const routes: Routes = [
     {
         path: '',
         redirectTo: '/abscence',
-        pathMatch: 'full' 
+        pathMatch: 'full'
     },
+    {
+        path: 'justification/:id',
+        component: PageJustificationComponent
+    }
+
     // {
     //     path: '**',
     //     component: PageNotFoundComponent
