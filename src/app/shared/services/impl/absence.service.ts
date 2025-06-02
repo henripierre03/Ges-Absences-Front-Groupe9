@@ -8,7 +8,7 @@ import { RestResponse } from '../../models/rest-response.model';
   providedIn: 'root',
 })
 export class AbsenceService {
-  private apiUrl = 'http://localhost:8080/api/web/absences';
+  private apiUrl = 'https://ges-absences.onrender.com/api/web/absence';
 
   constructor(private http: HttpClient) {}
 
