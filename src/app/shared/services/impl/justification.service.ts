@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Justification } from '../models/justification.model';
+import { Justification, JustificationResponse } from '../../models/justification.model';
+import { AbsenceAndEtudiantResponse } from '../../models/absence.model';
+import { RestResponse } from '../../models/rest-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JustificationService {
-  private apiUrl = 'http://localhost:8080/api/justifications';
+  private apiUrl = 'https://ges-absences.onrender.com/api/web/justification';
 
   constructor(private http: HttpClient) {}
 
@@ -22,4 +24,9 @@ export class JustificationService {
   rejeterJustification(id: string): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/${id}/rejeter`, {});
   }
+
+  getAbsenceJustification(absenceId: number): Observable<RestResponse<JustificationResponse>> {
+    return this.http.get<RestResponse<JustificationResponse>>(`${this.apiUrl}/absence/${absenceId}`);
+  }
+
 }

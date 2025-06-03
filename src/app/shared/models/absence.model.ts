@@ -1,11 +1,12 @@
-export interface AbsenceAndEtudiantResponse {
-  id: string;
-  date: Date;
-  typeAbsence: string;
-  courId: string;
-  // private string etudiantId;
-  tudiant: EtudiantAllResponse;
-}
+import { Justification } from "./justification.model";
+
+// export interface AbsenceAndEtudiantResponse {
+//   id: string;
+//   date: Date;
+//   typeAbsence: string;
+//   courId: string;
+//   etudiant: EtudiantAllResponse;
+// }
 
 export interface EtudiantAllResponse {
   id: string;
@@ -16,6 +17,7 @@ export interface EtudiantAllResponse {
   role: UserRole;
   filiere: Filiere;
   niveau: Niveau;
+  classeId: string | null;
 }
 
 export interface EtudiantAndAbsenceResponse {
@@ -31,8 +33,10 @@ export interface EtudiantAndAbsenceResponse {
 export interface AbsenceAndEtudiantResponse {
   id: string;
   date: Date;
+  typeAbsence: string;
   courId: string;
   etudiant: EtudiantAllResponse;
+  justification: Justification;
 }
 
 export type UserRole = 'ETUDIANT' | 'VIGILE' | 'ADMIN';

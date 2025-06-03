@@ -1,3 +1,5 @@
+import { EtudiantAllResponse } from "./absence.model";
+
 export interface Justification {
   id: string;
   prenom: string;
@@ -15,3 +17,13 @@ export interface Justification {
   date: string;
   etat: 'en_attente' | 'valide' | 'refuse';
 }
+
+export interface JustificationResponse {
+  id: string;
+  date: string;
+  message: string;
+  justificatifs: any;
+  validation: boolean;
+  etudiant: EtudiantAllResponse
+}
+

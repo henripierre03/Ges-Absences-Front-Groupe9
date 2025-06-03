@@ -18,7 +18,7 @@ export const routes: Routes = [
                 component: PageAbscenceComponent,
             },
             {
-                path: "justification/:abscenceId",
+                path: "justification/:absenceId",
                 component: PageJustificationComponent
             }
         ]
@@ -37,11 +37,6 @@ export const routes: Routes = [
         path: '',
         redirectTo: '/security',
         pathMatch: 'full' 
-    },
-
-    {
-        path: 'justification/:id',
-        component: PageJustificationComponent
     },
 
     {

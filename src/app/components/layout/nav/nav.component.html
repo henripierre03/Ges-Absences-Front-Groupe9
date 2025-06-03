@@ -1,6 +1,4 @@
-<nav
-  class="bg-primary rounded-b-2xl shadow-sm fixed w-full top-0 z-50 backdrop-blur-sm border-b border-gray-100"
->
+<nav class="bg-primary rounded-b-2xl shadow-sm fixed w-full top-0 z-50 backdrop-blur-sm border-b border-gray-100">
   <div class="container mx-auto px-6 py-3">
     <div class="flex items-center justify-between">
       <!-- Logo -->
@@ -8,22 +6,13 @@
         <!-- <div
           class="w-12 h-12 transform transition-all duration-300 group-hover:scale-110 relative overflow-hidden rounded-full shadow-sm"
         > -->
-        <img
-          src="/img/logo.png"
-          alt="Ouzeon Shop Logo"
-          class="w-32 h-20 -mt-3 -ml-5 -mb-2 object-cover"
-        />
+        <img src="/img/logo.png" alt="Ouzeon Shop Logo" class="w-32 h-20 -mt-3 -ml-5 -mb-2 object-cover" />
         <!-- </div> -->
       </a>
 
       <div
-        class="w-12 h-12 transform transition-all duration-300 group-hover:scale-110 relative overflow-hidden rounded-full shadow-sm"
-      >
-        <img
-          src="/img/logo-droite.png"
-          alt="Ouzeon Shop Logo"
-          class="w-full h-full object-cover"
-        />
+        class="w-12 h-12 transform transition-all duration-300 group-hover:scale-110 relative overflow-hidden rounded-full shadow-sm">
+        <img src="/img/logo-droite.png" alt="Ouzeon Shop Logo" class="w-full h-full object-cover" />
       </div>
     </div>
   </div>
@@ -31,66 +20,29 @@
 
 <aside>
   <div
-    class="flex flex-col m-auto items-center justify-center space-y-4 fixed bottom-60 left-0 z-50 bg-transparent p-4"
-  >
-    <a
-      class="cursor-pointer bg-primary p-2 rounded-full transition-colors duration-300"
-      routerLink="/absence"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-house-icon lucide-house"
-      >
+    class="flex flex-col m-auto items-center justify-center space-y-4 fixed bottom-60 left-0 z-50 bg-transparent p-4">
+    <a class="cursor-pointer bg-primary p-2 rounded-full transition-colors duration-300" routerLink="/absence">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-house-icon lucide-house">
         <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
         <path
-          d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-        />
+          d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
       </svg>
     </a>
-    <div
-      class="cursor-pointer bg-primary p-2 rounded-full transition-colors duration-300"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-circle-user-round-icon lucide-circle-user-round"
-      >
+    <div class="cursor-pointer bg-primary p-2 rounded-full transition-colors duration-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-circle-user-round-icon lucide-circle-user-round">
         <path d="M18 20a6 6 0 0 0-12 0" />
         <circle cx="12" cy="10" r="4" />
         <circle cx="12" cy="12" r="10" />
       </svg>
     </div>
-    <a
-      class="cursor-pointer bg-primary p-2 rounded-full transition-colors duration-300"
-      routerLink="/absence"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-notepad-text-icon lucide-notepad-text"
-      >
+    <a class="cursor-pointer bg-primary p-2 rounded-full transition-colors duration-300" routerLink="/absence">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-notepad-text-icon lucide-notepad-text">
         <path d="M8 2v4" />
         <path d="M12 2v4" />
         <path d="M16 2v4" />
@@ -100,22 +52,11 @@
         <path d="M8 18h5" />
       </svg>
     </a>
-    <button
-      (click)="onLogout()"
-      class="cursor-pointer fixed bottom-0 rounded-t-full bg-primary p-3 transition-colors duration-300"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-log-out-icon lucide-log-out"
-      >
+    <button (click)="onLogout()"
+      class="cursor-pointer fixed bottom-0 rounded-t-full bg-primary p-3 transition-colors duration-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-log-out-icon lucide-log-out">
         <path d="m16 17 5-5-5-5" />
         <path d="M21 12H9" />
         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
