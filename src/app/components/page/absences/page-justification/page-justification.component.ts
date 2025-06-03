@@ -37,7 +37,7 @@ constructor(
   this.justificationService.getAbsenceJustification(id).subscribe({
       next: (data) => {
         this.justification = data;
-        // console.log(data);
+        console.log(data);
         this.loading = false; // Set loading to false once data is received
       },
       error: (error) => {

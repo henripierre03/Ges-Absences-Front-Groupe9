@@ -17,7 +17,12 @@ export interface EtudiantAllResponse {
   role: UserRole;
   filiere: Filiere;
   niveau: Niveau;
-  classeId: string | null;
+  classe: Classe
+}
+
+export interface Classe {
+  id: string;
+  nom: string;
 }
 
 export interface EtudiantAndAbsenceResponse {
