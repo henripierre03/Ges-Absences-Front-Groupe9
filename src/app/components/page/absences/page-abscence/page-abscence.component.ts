@@ -29,12 +29,12 @@ export class PageAbscenceComponent implements OnInit {
     });
   }
 
-  async onLoadViewDetail(absenceId: number) {
+  async onLoadViewDetail(id: string) {
     this.router.navigateByUrl(".", {
       skipLocationChange: true,
 
     }).then(() => {
-      this.router.navigate([`/absence/justification/${absenceId}`])
+      this.router.navigate([`/absence/justification/${id}`])
     });
 
 }

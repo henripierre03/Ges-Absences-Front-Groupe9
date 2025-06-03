@@ -39,6 +39,20 @@ export interface AbsenceAndEtudiantResponse {
   justification: Justification;
 }
 
+
+export interface AbsenceResponse {
+  id: string;
+  date: Date;
+  typeAbsence: TypeAbsence;
+  cours: Cours;
+}
+
+
+export interface Cours {
+  id?: string;
+  module?: string;
+  salleId?: string;
+}
 export type UserRole = 'ETUDIANT' | 'VIGILE' | 'ADMIN';
 export type Filiere = 'GLRS' | 'IAGE' | 'TTL' | 'MAE' | 'CDSD';
 export type Niveau = 'L1' | 'L2' | 'L3' | 'M1' | 'M2';

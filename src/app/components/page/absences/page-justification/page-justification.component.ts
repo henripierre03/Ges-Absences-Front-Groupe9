@@ -30,10 +30,10 @@ constructor(
   
 
   ngOnInit(): void {
-  let absenceId: number = this.route.snapshot.params['absenceId'];
-  console.log("✅ Justification de l'absence " + absenceId);
-  alert("✅ Justification de l'absence " + absenceId);
-  this.justificationService.getAbsenceJustification(absenceId).subscribe(
+  let id = this.route.snapshot.params['absenceId'];
+  console.log("✅ Justification de l'absence " + id);
+  // alert("✅ Justification de l'absence " + id);
+  this.justificationService.getAbsenceJustification(id).subscribe(
     data => this.justification = data,
     error => console.log(error)
   );

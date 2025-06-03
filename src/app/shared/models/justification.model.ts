@@ -1,4 +1,4 @@
-import { EtudiantAllResponse } from "./absence.model";
+import { AbsenceResponse, EtudiantAllResponse } from "./absence.model";
 
 export interface Justification {
   id: string;
@@ -25,5 +25,6 @@ export interface JustificationResponse {
   justificatifs: any;
   validation: boolean;
   etudiant: EtudiantAllResponse
+  absence: AbsenceResponse;
 }
 

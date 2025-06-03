@@ -25,7 +25,7 @@ export class JustificationService {
     return this.http.put<void>(`${this.apiUrl}/${id}/rejeter`, {});
   }
 
-  getAbsenceJustification(absenceId: number): Observable<RestResponse<JustificationResponse>> {
+  getAbsenceJustification(absenceId: string): Observable<RestResponse<JustificationResponse>> {
     return this.http.get<RestResponse<JustificationResponse>>(`${this.apiUrl}/absence/${absenceId}`);
   }
 

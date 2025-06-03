@@ -62,7 +62,6 @@
         <tbody class="text-sm text-gray-700">
           @for (response of responses?.result; track response.id) {
           <tr class="border-t hover:bg-gray-50">
-            <td class="px-4 py-2">{{ response.id }}</td>
             <td class="px-4 py-2">{{ response.etudiant.nom }}</td>
             <td class="px-4 py-2">{{ response.etudiant.prenom }}</td>
             <td class="px-4 py-2">{{ response.etudiant.email }}</td>
@@ -91,7 +90,7 @@
               @if (response.justification !== null) {
               <button
                 class="text-xs font-semibold px-2 py-1 rounded-full bg-yellow-200 text-yellow-800 whitespace-nowrap hover:bg-yellow-300"
-                (click)="onLoadViewDetail(+response.id)">
+                (click)="onLoadViewDetail(response.id)">
                 Justifié
               </button>
               } @else {
