@@ -96,66 +96,86 @@
             </div>
 
             <div class="action-buttons">
-                <button 
-                class="action-btn invalidate"
-                (click)="onInvalidateAbsence()"
-                >
-                    ✗ Invalider Absences
-                </button>
-                <button 
-                class="action-btn validate"
-                (click)="onValidateAbsence()"
-                >
-                    ✓ Valider Absences
-                </button>
-                
-            </div>
+    <button class="action-btn invalidate" (click)="onInvalidateAbsence()">
+        ✗ Invalider Absences
+    </button>
+    <button class="action-btn validate" (click)="onValidateAbsence()">
+        ✓ Valider Absences
+    </button>
+</div>
+
         </div>
 
         <!-- Course Information -->
-        <div class="flex flex-col gap-2 justify-start items-start ">
-            <div class="bg-white p-20 rounded-lg shadow-md">
-                <div class="course-item ">
-                    <span class="course-label">Cours:</span>
+        <div class="flex flex-row gap-2 justify-start items-start ">
+            <div class="  p-10 rounded-lg shadow-md flex flex-col items-start justify-flex-start">
+                <div class="course-item2 ">
+                    <div class="flex-start course-label">Pieces jointes:</div>
                     @if (loading) {
                     <div class="flex w-64 animate-pulse gap-2 p-4">
                         <div class="flex-1">
                             <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
                         </div>
                     </div>
-                    } @else {
-                    <span class="course-value">{{ justification?.result?.absence?.cours?.module }}</span>
-                    }
-                    
-                </div>
-                <div class="course-item ">
-                    <span class="course-label">Salle:</span>
-                    @if (loading) {
-                    <div class="flex w-64 animate-pulse gap-2 p-4">
-                        <div class="flex-1">
-                            <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
-                        </div>
-                    </div>
-                    } @else {
-                    <span class="course-value">{{ justification?.result?.absence?.cours?.salleId }}</span>
-                    }
-                    
-                </div>
-            </div>
-            <div class="bg-white p-10 rounded-lg shadow-md flex flex-col items-start justify-flex-start">
-                <div class="course-item2 flex flex-col items-start justify-flex-start mb-4 p-2.5">
-                    <div class="flex-start course-label">Message:</div>
-                    @if (loading) {
-                    <div class="flex w-64 animate-pulse gap-2 p-4">
-                        <div class="flex-1">
-                            <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
-                        </div>
-                    </div>
-                    } @else {
-                    <div class="course-value">{{ justification?.result?.message }}</div>
-                }
-            </div>
-        </div>
+                    } @else if (justification?.result?.justificatifs!.length > 0) {
+                    @for (justificatif of justification?.result?.justificatifs; track $index) {
 
+                    <div class="rounded-lg">
+                        <img [src]="justificatif" [alt]="'Justificatif ' + $index" class="text-blue-500 rounded-2xl" />
+                    </div>
+                    }
+                    } @else {
+                    <div class="text-gray-500">Aucun justificatif disponible</div>
+                    }
+                    
+                </div>
+            </div>
+            <div class="flex flex-col gap-2 justify-start items-start ">
+                <div class="bg-white p-20 rounded-lg shadow-md">
+                    <div class="course-item ">
+                        <span class="course-label">Cours:</span>
+                        @if (loading) {
+                        <div class="flex w-64 animate-pulse gap-2 p-4">
+                            <div class="flex-1">
+                                <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
+                            </div>
+                        </div>
+                        } @else {
+                        <span class="course-value">{{ justification?.result?.absence?.cours?.module }}</span>
+                        }
+
+                    </div>
+                    <div class="course-item ">
+                        <span class="course-label">Salle:</span>
+                        @if (loading) {
+                        <div class="flex w-64 animate-pulse gap-2 p-4">
+                            <div class="flex-1">
+                                <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
+                            </div>
+                        </div>
+                        } @else {
+                        <span class="course-value">{{ justification?.result?.absence?.cours?.salle?.nom }}</span>
+                        }
+
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-lg shadow-md flex flex-col items-start justify-flex-start">
+                    <div class="course-item2 flex flex-col items-start justify-flex-start mb-4 p-2.5">
+                        <div class="flex-start course-label">Message:</div>
+                        @if (loading) {
+                        <div class="flex w-64 animate-pulse gap-2 p-4">
+                            <div class="flex-1">
+                                <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
+                            </div>
+                        </div>
+                        } @else {
+                        <div class="course-value">{{ justification?.result?.message }}</div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
     </div>
-</div>

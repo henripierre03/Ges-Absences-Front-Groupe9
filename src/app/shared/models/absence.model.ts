@@ -39,7 +39,7 @@ export interface AbsenceAndEtudiantResponse {
   id: string;
   date: Date;
   typeAbsence: string;
-  courId: string;
+  cour: Cours;
   etudiant: EtudiantAllResponse;
   justification: Justification;
 }
@@ -52,11 +52,16 @@ export interface AbsenceResponse {
   cours: Cours;
 }
 
+export interface Salle {
+  id: string;
+  nom: string;
+}
+
 
 export interface Cours {
   id?: string;
   module?: string;
-  salleId?: string;
+  salle?: Salle;
 }
 export type UserRole = 'ETUDIANT' | 'VIGILE' | 'ADMIN';
 export type Filiere = 'GLRS' | 'IAGE' | 'TTL' | 'MAE' | 'CDSD';

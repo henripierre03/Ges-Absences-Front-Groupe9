@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {  JustificationResponse } from '../../../../shared/models/justification.model';
 import { JustificationService } from '../../../../shared/services/impl/justification.service';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,8 @@ export class PageJustificationComponent implements OnInit {
 
 constructor(
     private route: ActivatedRoute,
-    private justificationService: JustificationService
+    private justificationService: JustificationService,
+    private router: Router
   ) { }
   justification?: RestResponse<JustificationResponse>;
   loading: boolean = true;
@@ -23,7 +24,6 @@ constructor(
 // toastClass: any;
 // isProcessing: any;
 
-  
 
   ngOnInit(): void {
   let id = this.route.snapshot.params['absenceId'];
@@ -43,19 +43,22 @@ constructor(
 }
 
 onValidateAbsence() {
-  if (this.justification?.result?.id) {
+    if (this.justification?.result?.id) {
       this.justificationService.validerJustification(this.justification.result.id).subscribe(() => {
         alert('✅ Justification validée !');
+        this.router.navigate(['/absence']);
       });
     }
-}
-onInvalidateAbsence() {
-  if (this.justification?.result?.id) {
-    this.justificationService.rejeterJustification(this.justification.result.id).subscribe(() => {
-      alert('❌ Justification rejetée !');
-      
-    });
   }
-}
+
+  onInvalidateAbsence() {
+    if (this.justification?.result?.id) {
+      // Implement the logic for invalidating the absence
+      this.justificationService.invaliderJustification(this.justification.result.id).subscribe(() => {
+        alert('❌ Justification invalidée !');
+        this.router.navigate(['/absence']);
+      });
+    }
+  }
 
 }

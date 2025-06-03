@@ -23,9 +23,10 @@ export interface JustificationResponse {
   id: string;
   date: string;
   message: string;
-  justificatifs: any;
+  justificatifs: string[];
   validation: boolean;
   etudiant: EtudiantAllResponse
   absence: AbsenceResponse;
 }
+
 

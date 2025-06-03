@@ -1,11 +1,13 @@
-<div class="bg-white font-sans p-6 pt-24">
+<div class="bg-white font-sans p-6 pt-28">
   <div class="max-w-6xl px-4 mx-auto">
-    <h1 class="text-xl font-bold mb-6">
-      Liste des Etudiants Absents, en Retards et Présents
-    </h1>
 
     <!-- Search Bar and Filter aligned to the right -->
-    <div class="px-6 flex justify-end items-center gap-4">
+     <div class="flex justify-between items-center mb-6">
+      <div class="text-xl font-bold flex-start">
+        Liste des Etudiants Absents, en Retards et Présents
+      </div>
+      <div class="px-6 flex justify-end items-center gap-4">
+      
       <!-- Search Input -->
       <div class="relative">
         <input type="text" placeholder="Rechercher"
@@ -29,6 +31,9 @@
       </div>
     </div>
 
+     </div>
+    
+
     <!-- Loader -->
 
     <div class="mt-6 overflow-x-auto  shadow rounded-lg">
@@ -49,7 +54,7 @@
         </thead>
         @if (loading) {
         <tr>
-          <td colspan="9" class="text-center">
+          <td colspan="10" class="text-center">
             <div class="flex justify-center items-center h-64">
               <div class="flex flex-row gap-2">
                 <div class="w-4 h-4 rounded-full bg-primary animate-bounce"></div>
@@ -66,7 +71,7 @@
             <td class="px-4 py-2">{{ response.etudiant.nom }}</td>
             <td class="px-4 py-2">{{ response.etudiant.prenom }}</td>
             <td class="px-4 py-2">{{ response.etudiant.email }}</td>
-            <td class="px-4 py-2">{{ response.courId }}</td>
+            <td class="px-4 py-2">{{ response.cour.module }}</td>
             <td class="px-4 py-2">{{ response.etudiant.matricule }}</td>
             <td class="px-4 py-2">{{ response.etudiant.niveau }}</td>
             <td class="px-4 py-2">{{ response.etudiant.filiere }}</td>
@@ -116,10 +121,10 @@
               </button>
               }
               }@else{
-                <button
-                  class="text-xs font-semibold px-2 py-1 rounded-full bg-gray-200 text-gray-800 whitespace-nowrap hover:bg-gray-300">
-                  N/A
-                </button>
+              <button
+                class="text-xs font-semibold px-2 py-1 rounded-full bg-gray-200 text-gray-800 whitespace-nowrap hover:bg-gray-300">
+                N/A
+              </button>
               }
             </td>
           </tr>

@@ -17,12 +17,13 @@ export class JustificationService {
     return this.http.get<Justification>(`${this.apiUrl}/${id}`);
   }
 
-  validerJustification(id: string): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}/valider`, {});
+   validerJustification(id: string): Observable<void> {
+    const body = { id, validation: true }; // Include the request body
+    return this.http.put<void>(`${this.apiUrl}/${id}`, body); // Update the endpoint URL
   }
-
-  rejeterJustification(id: string): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}/rejeter`, {});
+  invaliderJustification(id: string): Observable<void> {
+    const body = { id, validation: false }; // Include the request body
+    return this.http.put<void>(`${this.apiUrl}/${id}`, body); // Update the endpoint URL
   }
 
   getAbsenceJustification(absenceId: string): Observable<RestResponse<JustificationResponse>> {
