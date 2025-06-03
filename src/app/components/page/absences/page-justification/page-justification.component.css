@@ -172,9 +172,20 @@
 
         .course-item {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content:flex-start;
+            align-items: start;
             margin-bottom: 15px;
+            padding: 20px;
+            flex-direction: row;
+        }
+
+        .course-item2 {
+            display: flex;
+            justify-content:flex-start;
+            align-items: start;
+            margin-bottom: 15px;
+            padding: 20px;
+            flex-direction: column;
         }
 
         .course-item:last-child {

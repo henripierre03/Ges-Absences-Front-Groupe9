@@ -12,12 +12,7 @@ import { RestResponse } from '../../../../shared/models/rest-response.model';
   styleUrls: ['./page-justification.component.css']
 })
 export class PageJustificationComponent implements OnInit {
-ouvrirPieceJointe() {
-throw new Error('Method not implemented.');
-}
-toggleJustification() {
-throw new Error('Method not implemented.');
-}
+
 constructor(
     private route: ActivatedRoute,
     private justificationService: JustificationService
@@ -47,20 +42,20 @@ constructor(
     });
 }
 
+onValidateAbsence() {
+  if (this.justification?.result?.id) {
+      this.justificationService.validerJustification(this.justification.result.id).subscribe(() => {
+        alert('✅ Justification validée !');
+      });
+    }
+}
+onInvalidateAbsence() {
+  if (this.justification?.result?.id) {
+    this.justificationService.rejeterJustification(this.justification.result.id).subscribe(() => {
+      alert('❌ Justification rejetée !');
+      
+    });
+  }
+}
 
-  // valider() {
-  //   if (this.justification?.id) {
-  //     this.justificationService.validerJustification(this.justification.id).subscribe(() => {
-  //       alert('✅ Justification validée !');
-  //     });
-  //   }
-  // }
-
-  // rejeter() {
-  //   if (this.justification?.id) {
-  //     this.justificationService.rejeterJustification(this.justification.id).subscribe(() => {
-  //       alert('❌ Justification rejetée !');
-  //     });
-  //   }
-  // }
 }

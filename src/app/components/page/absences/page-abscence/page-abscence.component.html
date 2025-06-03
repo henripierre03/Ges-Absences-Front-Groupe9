@@ -44,6 +44,7 @@
             <th class="px-4 py-3 border-b">Filière</th>
             <th class="px-4 py-3 border-b">Pointage</th>
             <th class="px-4 py-3 border-b">Justification</th>
+            <th class="px-4 py-3 border-b">Etat Justification</th>
           </tr>
         </thead>
         @if (loading) {
@@ -86,7 +87,7 @@
               </button>
               }
             </td>
-            <td class="px-4 py-2 flex items-center space-x-2">
+            <td class="px-4 py-2 ">
               @if (response.justification !== null) {
               <button
                 class="text-xs font-semibold px-2 py-1 rounded-full bg-yellow-200 text-yellow-800 whitespace-nowrap hover:bg-yellow-300"
@@ -98,6 +99,27 @@
                 class="text-xs font-semibold px-2 py-1 rounded-full bg-gray-200 text-gray-800 whitespace-nowrap hover:bg-gray-300">
                 Non justifié
               </button>
+              }
+            </td>
+            <td class="px-4 py-2 ">
+              @if (response.justification !== null) {
+
+              @if (response.justification.validation == false) {
+              <button
+                class="text-xs font-semibold px-2 py-1 rounded-full bg-red-200 text-red-800 whitespace-nowrap hover:bg-red-300">
+                Non validé
+              </button>
+              } @else {
+              <button
+                class="text-xs font-semibold px-2 py-1 rounded-full bg-green-200 text-green-800 whitespace-nowrap hover:bg-green-300">
+                Valider
+              </button>
+              }
+              }@else{
+                <button
+                  class="text-xs font-semibold px-2 py-1 rounded-full bg-gray-200 text-gray-800 whitespace-nowrap hover:bg-gray-300">
+                  N/A
+                </button>
               }
             </td>
           </tr>

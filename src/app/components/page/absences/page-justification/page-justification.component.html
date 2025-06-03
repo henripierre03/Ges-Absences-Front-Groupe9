@@ -96,101 +96,66 @@
             </div>
 
             <div class="action-buttons">
-                <button class="action-btn">
-                    Voir Justification
-                    <span class="badge"></span>
-                </button>
-                <button class="action-btn">
-
-                    Voir Pièce Jointe
-                    <span class="badge">0</span>
-                </button>
-                <button class="action-btn validate">
-                    ✓ Valider Absences
-                    <span class="badge" id="pendingCount">0</span>
-                </button>
-                <button class="action-btn invalidate">
+                <button 
+                class="action-btn invalidate"
+                (click)="onInvalidateAbsence()"
+                >
                     ✗ Invalider Absences
-                    <span class="badge" id="approvedCount">0</span>
                 </button>
+                <button 
+                class="action-btn validate"
+                (click)="onValidateAbsence()"
+                >
+                    ✓ Valider Absences
+                </button>
+                
             </div>
         </div>
 
         <!-- Course Information -->
-        <div class="course-info">
-            <div class="course-item">
-                <span class="course-label">Cours:</span>
-                @if (loading) {
-                <div class="flex w-64 animate-pulse gap-2 p-4">
-                    <div class="flex-1">
-                        <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
+        <div class="flex flex-col gap-2 justify-start items-start ">
+            <div class="bg-white p-20 rounded-lg shadow-md">
+                <div class="course-item ">
+                    <span class="course-label">Cours:</span>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
                     </div>
+                    } @else {
+                    <span class="course-value">{{ justification?.result?.absence?.cours?.module }}</span>
+                    }
+                    
                 </div>
-                } @else {
-                <span class="course-value">{{ justification?.result?.absence?.cours?.module }}</span>
+                <div class="course-item ">
+                    <span class="course-label">Salle:</span>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
+                    <span class="course-value">{{ justification?.result?.absence?.cours?.salleId }}</span>
+                    }
+                    
+                </div>
+            </div>
+            <div class="bg-white p-10 rounded-lg shadow-md flex flex-col items-start justify-flex-start">
+                <div class="course-item2 flex flex-col items-start justify-flex-start mb-4 p-2.5">
+                    <div class="flex-start course-label">Message:</div>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
+                    <div class="course-value">{{ justification?.result?.message }}</div>
                 }
             </div>
-            <div class="course-item">
-                <span class="course-label">Salle:</span>
-                @if (loading) {
-                <div class="flex w-64 animate-pulse gap-2 p-4">
-                    <div class="flex-1">
-                        <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
-                    </div>
-                </div>
-                } @else {
-                <span class="course-value">{{ justification?.result?.absence?.cours?.salleId }}</span>
-                }
-            </div>
         </div>
+
     </div>
-</div>
-
-<!-- Back Button -->
-<!-- <div class="back-btn">←</div> -->
-
-<!-- Modal pour Voir Justification -->
-<div id="justificationModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3 class="modal-title">Justifications d'Absence - Aly Mamour Cisse</h3>
-            <button class="action-btn" onclick="showJustificationModal()">
-                Voir Justification
-            </button>
-        </div>
-        <div class="justification-content" id="justificationContent">
-            <!-- Le contenu sera généré dynamiquement -->
-        </div>
-    </div>
-</div>
-
-<!-- Modal pour Voir Pièce Jointe -->
-<div id="pieceJointeModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3 class="modal-title">Pièces Jointes - Aly Mamour Cisse</h3>
-            <button class="close-btn" onclick="closePieceJointeModal()">&times;</button>
-        </div>
-        <div class="justification-content" id="pieceJointeContent">
-            <!-- Le contenu sera généré dynamiquement -->
-        </div>
-    </div>
-</div>
-
-<!-- Modal pour Validation -->
-<div id="validationModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3 class="modal-title" id="validationModalTitle">Validation des Justifications</h3>
-            <button class="close-btn" onclick="closeValidationModal()">&times;</button>
-        </div>
-        <div class="justification-content" id="validationContent">
-            <!-- Le contenu sera généré dynamiquement -->
-        </div>
-    </div>
-</div>
-
-<!-- Notification -->
-<div id="notification" class="notification">
-    <span id="notificationMessage"></span>
 </div>

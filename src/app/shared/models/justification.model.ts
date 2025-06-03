@@ -8,6 +8,7 @@ export interface Justification {
   numero: string;
   matricule: string;
   niveau: string;
+  validation: boolean;
   filiere: string;
   classe: string;
   cours: string;
