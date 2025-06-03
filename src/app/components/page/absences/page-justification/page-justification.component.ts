@@ -23,6 +23,7 @@ constructor(
     private justificationService: JustificationService
   ) { }
   justification?: RestResponse<JustificationResponse>;
+  loading: boolean = true;
 //   voirJustification = false;
 // toastClass: any;
 // isProcessing: any;
@@ -33,10 +34,17 @@ constructor(
   let id = this.route.snapshot.params['absenceId'];
   console.log("✅ Justification de l'absence " + id);
   // alert("✅ Justification de l'absence " + id);
-  this.justificationService.getAbsenceJustification(id).subscribe(
-    data => this.justification = data,
-    error => console.log(error)
-  );
+  this.justificationService.getAbsenceJustification(id).subscribe({
+      next: (data) => {
+        this.justification = data;
+        // console.log(data);
+        this.loading = false; // Set loading to false once data is received
+      },
+      error: (error) => {
+        console.error(error);
+        this.loading = false; // Also set loading to false in case of error
+      },
+    });
 }
 
 

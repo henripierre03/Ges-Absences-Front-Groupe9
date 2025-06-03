@@ -7,35 +7,91 @@
 
     <div class="content-wrapper">
         <!-- Student Information Card -->
-        <div class="student-card " >
+        <div class="student-card ">
             <div class="student-header">
                 <div class="student-avatar">👤</div>
                 <div class="student-name">
-                    <h2>{{ justification?.result?.etudiant?.nom }}</h2>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="mb-4 h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
+                    <h2 class="mb-2">{{ justification?.result?.etudiant?.nom }}</h2>
+                    }
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
                     <p>{{ justification?.result?.etudiant?.prenom }}</p>
+                    }
                 </div>
             </div>
 
             <div class="student-details">
                 <div class="detail-row">
                     <span class="detail-label">E-mail:</span>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
                     <span class="detail-value">{{ justification?.result?.etudiant?.email }}</span>
+                    }
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Matricule:</span>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
                     <span class="detail-value">{{ justification?.result?.etudiant?.matricule }}</span>
+                    }
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Niveau:</span>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
                     <span class="detail-value">{{ justification?.result?.etudiant?.niveau }}</span>
+                    }
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Filière:</span>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
                     <span class="detail-value">{{ justification?.result?.etudiant?.filiere }}</span>
+                    }
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Classe:</span>
+                    @if (loading) {
+                    <div class="flex w-64 animate-pulse gap-2 p-4">
+                        <div class="flex-1">
+                            <div class="h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+                        </div>
+                    </div>
+                    } @else {
                     <span class="detail-value">{{ justification?.result?.etudiant?.classeId }}</span>
+                    }
                 </div>
             </div>
 

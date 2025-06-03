@@ -119,6 +119,7 @@
 
         .student-name {
             flex: 1;
+            
         }
 
         .student-name h2 {
@@ -534,3 +535,6 @@
                 min-width: 140px;
             }
         }
+
+
+        
