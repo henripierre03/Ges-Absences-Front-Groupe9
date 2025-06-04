@@ -2,8 +2,7 @@
   "routes": [
     {
       "src": "/absence/justification/:absenceId",
-      "dest": "/index.html",
-      "renderMode": "client"
+      "dest": "/index.html"
     }
   ]
 }
