@@ -1,5 +1,5 @@
 export const environment = {
-    apiUrl: 'http://localhost:8080/api',
+    apiUrl: 'https://ges-absences.onrender.com/api',
     page: 0,
     size: 10
 
