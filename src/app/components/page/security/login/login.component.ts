@@ -46,11 +46,16 @@ export class LoginComponent implements OnInit {
     const { login, password } = this.formLogin.value;
     this.authService.Login(login, password).subscribe({
       next: (response) => {
-        if (response.status === 200 && response.result.role === 'ADMIN') {
-          this.router.navigateByUrl('/absence');
+        if (response.status === 200) {
+          if (response.result.role === 'ADMIN') {
+            this.router.navigateByUrl('/absence');
+          }else{
+            alert('Erreur: Veillez aller dans la plateforme mobile');
+          }
+          
         } else {
           alert('Login failed: ');
-          console.error('Login failed: ', response.result);
+          // console.error('Login failed: ', response.result);
         }
       },
       error: (error) => {

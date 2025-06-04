@@ -30,13 +30,14 @@ export class AuthentificationService implements IAuthService {
     });
     result.subscribe((response) => {
       this.currentUserSignal.set(response.result);
-      // localStorage.setItem('user', JSON.stringify(response.result));
+      localStorage.setItem('user', JSON.stringify(response.result));
     });
     return result;
   }
 
   Logout(): void {
     this.currentUserSignal.set(null);
+    localStorage.removeItem('user');
   }
   IsAuthenticated(): boolean {
     return !!this.currentUserSignal();

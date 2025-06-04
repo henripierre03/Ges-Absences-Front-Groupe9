@@ -10,7 +10,7 @@ export const routes: Routes = [
     {
         path: 'absence',
         component: AbsenceComponent ,
-        // canActivate:[AuthGuard],
+        canActivate:[AuthGuard],
 
         children: [
             {
