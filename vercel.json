@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "src": "/absence/justification/:absenceId",
+      "dest": "/index.html",
+      "renderMode": "client"
+    }
+  ]
+}
