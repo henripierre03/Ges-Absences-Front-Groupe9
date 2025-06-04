@@ -96,13 +96,13 @@
             </div>
 
             <div class="action-buttons">
-    <button class="action-btn invalidate" (click)="onInvalidateAbsence()">
-        ✗ Invalider Absences
-    </button>
-    <button class="action-btn validate" (click)="onValidateAbsence()">
-        ✓ Valider Absences
-    </button>
-</div>
+                <button class="action-btn invalidate" (click)="onInvalidateAbsence()">
+                    ✗ Invalider Absences
+                </button>
+                <button class="action-btn validate" (click)="onValidateAbsence()">
+                    ✓ Valider Absences
+                </button>
+            </div>
 
         </div>
 
@@ -112,11 +112,13 @@
                 <div class="course-item2 ">
                     <div class="flex-start course-label">Pieces jointes:</div>
                     @if (loading) {
+                    <!-- @for (justificatif of justification?.result?.justificatifs; track $index) { -->
                     <div class="flex w-64 animate-pulse gap-2 p-4">
                         <div class="flex-1">
-                            <div class="h-5 w-3/5 rounded-lg bg-slate-400 text-sm"></div>
+                            <div class="h-20 w-full rounded-lg bg-slate-400 text-sm"></div>
                         </div>
                     </div>
+                    <!-- } -->
                     } @else if (justification?.result?.justificatifs!.length > 0) {
                     @for (justificatif of justification?.result?.justificatifs; track $index) {
 
@@ -127,7 +129,7 @@
                     } @else {
                     <div class="text-gray-500">Aucun justificatif disponible</div>
                     }
-                    
+
                 </div>
             </div>
             <div class="flex flex-col gap-2 justify-start items-start ">
