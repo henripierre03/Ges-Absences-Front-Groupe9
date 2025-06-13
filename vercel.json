@@ -5,8 +5,18 @@
   "outputDirectory": "dist/gestion-absence-angular",
   "routes": [
     {
+      "src": "/absence/justification/(.*)",
+      "dest": "/index.html",
+      "headers": {
+        "Cache-Control": "no-cache"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "prerender": {
+    "enabled": false
+  }
 }
