@@ -19,8 +19,7 @@ export const routes: Routes = [
             },
             {
                 path: "justification/:absenceId",
-                component: PageJustificationComponent,
-                renderMode: 'default'
+                component: PageJustificationComponent
             }
         ]
     },
