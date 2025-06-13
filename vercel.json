@@ -1,8 +1,27 @@
 {
+  "version": 2,
   "routes": [
     {
       "src": "/absence/justification/:absenceId",
+      "dest": "/index.html",
+      "methods": ["GET"],
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "prerender": {
+    "getPrerenderParams": {
+      "/absence/justification/:absenceId": {
+        "absenceId": ["1", "2", "3"]
+      }
+    }
+  }
 }
