@@ -1,27 +1,19 @@
 {
   "version": 2,
+  "buildCommand": "ng build",
+  "outputDirectory": "dist",
+  "framework": "angular",
   "routes": [
     {
-      "src": "/absence/justification/:absenceId",
+      "src": "/absence/justification/(.*)",
       "dest": "/index.html",
-      "methods": ["GET"],
       "headers": {
-        "Cache-Control": "public, max-age=0, must-revalidate"
+        "Cache-Control": "no-cache"
       }
-    },
-    {
-      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "prerender": {
-    "getPrerenderParams": {
-      "/absence/justification/:absenceId": {
-        "absenceId": ["1", "2", "3"]
-      }
-    }
-  }
+  ]
 }
