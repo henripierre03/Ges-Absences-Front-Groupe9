@@ -8,7 +8,7 @@ export const serverRoutes: ServerRoute[] = [
     getPrerenderParams: async () => {
       // TODO: Retournez un tableau de paramètres à pré-rendre
       // Exemple statique :
-      return [{ absenceId: '1' }, { absenceId: '2' }, { absenceId: '3' }];
+      return [{ absenceId: '6840735758950d04348206f0' }, { absenceId: '6840735558950d04348206dc' }];
       // En production, vous pouvez aller chercher la liste des IDs depuis une API ou une base de données
     },
   },
