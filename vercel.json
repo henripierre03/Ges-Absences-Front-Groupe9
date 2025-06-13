@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "ng build",
-  "outputDirectory": "dist",
+  "buildCommand": "ng build --configuration production",
+  "outputDirectory": "dist/ges-absences-front-groupe9",
   "framework": "angular",
   "routes": [
     {
@@ -14,6 +14,15 @@
     {
       "src": "/(.*)",
       "dest": "/index.html"
+    }
+  ],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/ges-absences-front-groupe9"
+      }
     }
   ]
 }
