@@ -1,28 +1,12 @@
 {
   "version": 2,
-  "buildCommand": "ng build --configuration production",
-  "outputDirectory": "dist/ges-absences-front-groupe9",
   "framework": "angular",
+  "buildCommand": "ng build --configuration production",
+  "outputDirectory": "dist/gestion-absence-angular",
   "routes": [
-    {
-      "src": "/absence/justification/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "Cache-Control": "no-cache"
-      }
-    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
-    }
-  ],
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/ges-absences-front-groupe9"
-      }
     }
   ]
 }
