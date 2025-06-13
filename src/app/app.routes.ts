@@ -16,12 +16,13 @@ export const routes: Routes = [
             {
                 path: '',
                 component: PageAbscenceComponent,
-            },
-            {
-                path: "justification/:absenceId",
-                component: PageJustificationComponent,
-                data: { renderMode: 'server' }
             }
+            // ,
+            // {
+            //     path: "justification/:absenceId",
+            //     component: PageJustificationComponent,
+            //     data: { renderMode: 'server' }
+            // }
         ]
     },
     {
