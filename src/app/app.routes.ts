@@ -5,6 +5,7 @@ import { AbsenceComponent } from './components/page/absences/absence.component';
 import { SecurityComponent } from './components/page/security/security.component';
 import { LoginComponent } from './components/page/security/login/login.component';
 import { AuthGuard } from './components/page/security/auth.guard';
+import { DashboardComponent } from './components/page/absences/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -16,8 +17,11 @@ export const routes: Routes = [
             {
                 path: '',
                 component: PageAbscenceComponent,
-            }
-            ,
+            },
+            {
+                path: 'accueil',
+                component: DashboardComponent
+            },
             {
                 path: "justification/:absenceId",
                 component: PageJustificationComponent,

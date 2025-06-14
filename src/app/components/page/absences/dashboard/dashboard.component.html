@@ -1,0 +1,196 @@
+
+<div class="font-sans p-6 pt-28 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <!-- Header Dashboard -->
+    <div class="mb-8">
+      <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-3">
+              🏛️ Institut Superieur de Management
+            </h1>
+            <p class="text-gray-600">Vue d'ensemble des statistiques et informations de l'université</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      <!-- Répartition par Filière -->
+      <div class="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+            📊 Répartition des Étudiants par Filière
+          </h3>
+          
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-4 bg-blue-50 rounded-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+              <span class="font-medium text-gray-800">Digital Campus</span>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-blue-600">892 étudiants</div>
+              <div class="text-sm text-gray-500">31.3%</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between p-4 bg-green-50 rounded-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+              <span class="font-medium text-gray-800">Management</span>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-green-600">654 étudiants</div>
+              <div class="text-sm text-gray-500">23.0%</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between p-4 bg-purple-50 rounded-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+              <span class="font-medium text-gray-800">Madiba</span>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-purple-600">487 étudiants</div>
+              <div class="text-sm text-gray-500">17.1%</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between p-4 bg-orange-50 rounded-xl">
+            <div class="flex items-center gap-3">
+              <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+              <span class="font-medium text-gray-800">Droit</span>
+            </div>
+            <div class="text-right">
+              <div class="font-bold text-orange-600">487 étudiants</div>
+              <div class="text-sm text-gray-500">17.1%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informations Universitaires -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <!-- Informations Générales -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+          🏛️ Informations Générales
+        </h3>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <span class="text-gray-600">Nom de l'Université</span>
+            <span class="font-semibold text-gray-800">{{ universityName || 'Université Ouzeon' }}</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <span class="text-gray-600">Année Académique</span>
+            <span class="font-semibold text-gray-800">{{ academicYear || '2024-2025' }}</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <span class="text-gray-600">Semestre Actuel</span>
+            <span class="font-semibold text-gray-800">{{ currentSemester || 'Semestre 2' }}</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <span class="text-gray-600">Campus</span>
+            <span class="font-semibold text-gray-800">{{ campusCount || '3' }} Campus</span>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <span class="text-gray-600">Salles de Cours</span>
+            <span class="font-semibold text-gray-800">{{ classroomCount || '45' }} Salles</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistiques Académiques -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+          📈 Statistiques Académiques
+        </h3>
+        <div class="space-y-4">
+          <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-xl">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-blue-800 font-semibold">Cours Actifs</p>
+                <p class="text-2xl font-bold text-blue-900">{{ activeCourses || '234' }}</p>
+              </div>
+              <div class="text-blue-600">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-xl">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-green-800 font-semibold">Examens ce Mois</p>
+                <p class="text-2xl font-bold text-green-900">{{ monthlyExams || '18' }}</p>
+              </div>
+              <div class="text-green-600">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-xl">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-purple-800 font-semibold">Justifications en Attente</p>
+                <p class="text-2xl font-bold text-purple-900">{{ pendingJustifications || '42' }}</p>
+              </div>
+              <div class="text-purple-600">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions Rapides -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+      <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        ⚡ Actions Rapides
+      </h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <button class="flex flex-col items-center gap-3 p-4 bg-blue-50 hover:bg-blue-100 rounded-xl transition-colors duration-200 group">
+          <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-blue-800">Gérer Étudiants</span>
+        </button>
+        <button class="flex flex-col items-center gap-3 p-4 bg-green-50 hover:bg-green-100 rounded-xl transition-colors duration-200 group">
+          <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-green-800">Ajouter Cours</span>
+        </button>
+        <button class="flex flex-col items-center gap-3 p-4 bg-purple-50 hover:bg-purple-100 rounded-xl transition-colors duration-200 group">
+          <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-purple-800">Voir Rapports</span>
+        </button>
+        <button class="flex flex-col items-center gap-3 p-4 bg-orange-50 hover:bg-orange-100 rounded-xl transition-colors duration-200 group">
+          <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-orange-800">Paramètres</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
