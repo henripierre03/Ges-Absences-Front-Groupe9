@@ -20,10 +20,19 @@ export class AbsenceService {
     page: number = environment.page,
     size: number = environment.size,
   ): Observable<RestResponse<AbsenceAndEtudiantResponse[]>> {
-    console.log(this.token);
 
     return this.http.get<RestResponse<AbsenceAndEtudiantResponse[]>>(
       `${environment.apiUrl}/web/absence?page=${page}&size=${size}`,
+      {
+        headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
+      }
+    );
+  }
+
+  getAllAbsencesWithoutPaginate(): Observable<RestResponse<AbsenceAndEtudiantResponse[]>> {
+
+    return this.http.get<RestResponse<AbsenceAndEtudiantResponse[]>>(
+      `${environment.apiUrl}/web/absence/all`,
       {
         headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
       }

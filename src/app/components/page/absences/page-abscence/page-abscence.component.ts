@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './page-abscence.component.css',
 })
 export class PageAbscenceComponent implements OnInit {
-
   searchTerm: string = '';
   selectedStatus: string = 'all';
   filteredResponses?: RestResponse<AbsenceAndEtudiantResponse[]>;
@@ -43,24 +42,15 @@ export class PageAbscenceComponent implements OnInit {
   }
 
   nextPage(page: number) {
-    this.refresh(page-1);
+    this.refresh(page - 1);
   }
   previousPage(page: number) {
-    this.refresh(page+1);
+    this.refresh(page + 1);
   }
 
   private refresh(page: number = 0) {
-    // this.absenceService.getAllAbsences(page).subscribe({
-    //   next: (data) => {
-    //     this.responses = data;
-    //   },
-    //   error: (error) => {
-    //     console.log(error);
-    //   },
-    // });
     this.loadData(page);
   }
-
 
   loadData(page: number = 0) {
     this.absenceService.getAllAbsences(page).subscribe({
@@ -92,23 +82,25 @@ export class PageAbscenceComponent implements OnInit {
     // Filtre par recherche
     if (this.searchTerm) {
       const searchLower = this.searchTerm.toLowerCase();
-      filtered = filtered.filter(item => 
-        item.etudiant.nom.toLowerCase().includes(searchLower) ||
-        item.etudiant.prenom.toLowerCase().includes(searchLower) ||
-        item.etudiant.matricule.toLowerCase().includes(searchLower)
+      filtered = filtered.filter(
+        (item) =>
+          item.etudiant.nom.toLowerCase().includes(searchLower) ||
+          item.etudiant.prenom.toLowerCase().includes(searchLower) ||
+          item.etudiant.matricule.toLowerCase().includes(searchLower)
       );
     }
 
     // Filtre par statut
     if (this.selectedStatus !== 'all') {
-      filtered = filtered.filter(item => item.typeAbsence === this.selectedStatus);
+      filtered = filtered.filter(
+        (item) => item.typeAbsence === this.selectedStatus
+      );
     }
 
     // Mise à jour des résultats filtrés
     this.filteredResponses = {
       ...this.responses,
-      result: filtered
+      result: filtered,
     };
   }
 }
-
