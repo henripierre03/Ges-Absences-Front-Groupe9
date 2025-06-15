@@ -16,11 +16,14 @@ export class AbsenceService {
   token = JSON.parse(localStorage.getItem('user') || '{}').token;
 
   // Récupérer toutes les absences pour l'admin
-  getAllAbsences(): Observable<RestResponse<AbsenceAndEtudiantResponse[]>> {
+  getAllAbsences(
+    page: number = environment.page,
+    size: number = environment.size,
+  ): Observable<RestResponse<AbsenceAndEtudiantResponse[]>> {
     console.log(this.token);
 
     return this.http.get<RestResponse<AbsenceAndEtudiantResponse[]>>(
-      `${environment.apiUrl}/web/absence`,
+      `${environment.apiUrl}/web/absence?page=${page}&size=${size}`,
       {
         headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
       }
