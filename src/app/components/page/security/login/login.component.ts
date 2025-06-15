@@ -19,6 +19,8 @@ import { AuthentificationService } from '../../../../shared/services/impl/authen
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
+  loading: boolean = false;
+
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly route: ActivatedRoute,
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
 
       return;
     }
+    this.loading = true;
     const { login, password } = this.formLogin.value;
     this.authService.Login(login, password).subscribe({
       next: (response) => {
@@ -57,9 +60,11 @@ export class LoginComponent implements OnInit {
           alert('Login failed: ');
           // console.error('Login failed: ', response.result);
         }
+        this.loading = false;
       },
       error: (error) => {
         console.error(error);
+        this.loading = false;
       },
     });
   }
