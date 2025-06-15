@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { AuthentificationService } from '../../../shared/services/impl/authentification.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
 })

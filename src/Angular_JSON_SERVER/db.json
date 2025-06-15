@@ -1,0 +1,64 @@
+[
+  {
+    "nom": "Jane Cooper",
+    "prenom": "Microsoft",
+    "telephone": "7751516132",
+    "email": "jane@microsoft.com",
+    "cours": "Angular",
+    "matricule": "1561AF",
+    "niveau": "L1",
+    "filiere": "ETSE",
+    "classe": "B",
+    "etat": "Présent"
+  },
+  {
+    "nom": "Cisse",
+    "prenom": "Aly",
+    "telephone": "775438542",
+    "email": "Alycisse@gmail.com",
+    "cours": "Flutter",
+    "matricule": "1234AB",
+    "niveau": "L3",
+    "filiere": "GLRS",
+    "classe": "A",
+    "etat": "Absent",
+    "justification": "Justification Disponible"
+  },
+  {
+    "nom": "Jerome Bell",
+    "prenom": "Google",
+    "telephone": "7845121355",
+    "email": "jerome@google.com",
+    "cours": "Cisco",
+    "matricule": "ZDAZD5",
+    "niveau": "L3",
+    "filiere": "GLRS",
+    "classe": "A",
+    "etat": "En retard"
+  },
+  {
+    "nom": "Marc Ahi",
+    "prenom": "Google",
+    "telephone": "7845121355",
+    "email": "marc@ahi.com",
+    "cours": "Cisco",
+    "matricule": "ISM4532",
+    "niveau": "L3",
+    "filiere": "GLRS",
+    "classe": "A",
+    "etat": "Present"
+  },
+  {
+    "nom": "Marvin McKinney",
+    "prenom": "Tesla",
+    "telephone": "76513215315",
+    "email": "marvin@tesla.com",
+    "cours": "Spring",
+    "matricule": "SADAD23",
+    "niveau": "L3",
+    "filiere": "GLRS",
+    "classe": "A",
+    "etat": "Absent",
+    "justification": "Justification Invalide"
+  }
+]
