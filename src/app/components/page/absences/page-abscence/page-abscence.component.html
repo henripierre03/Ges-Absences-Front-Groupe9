@@ -21,6 +21,8 @@
             <div class="relative flex-1">
               <input
                 type="text"
+                [(ngModel)]="searchTerm"
+                (ngModelChange)="onSearch()"
                 placeholder="Rechercher un étudiant..."
                 class="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary focus:outline-none transition-colors duration-300 bg-gray-50 focus:bg-white"
               />
@@ -42,6 +44,8 @@
             <!-- Filter by Status -->
             <div class="relative">
               <select
+                [(ngModel)]="selectedStatus"
+                (ngModelChange)="onStatusChange()"
                 id="etat-select"
                 name="etat"
                 class="appearance-none w-full sm:w-48 py-3 px-4 pr-10 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors duration-300 bg-gray-50 focus:bg-white font-medium text-gray-700"
@@ -138,7 +142,7 @@
           </tbody>
           } @else {
           <tbody class="text-sm">
-            @for (response of responses?.result; track response.id) {
+            @for (response of filteredResponses?.result; track response.id) {
             <tr
               class="border-b border-gray-50 hover:bg-blue-50/30 transition-colors duration-200"
             >

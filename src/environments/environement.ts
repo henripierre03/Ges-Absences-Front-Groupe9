@@ -1,5 +1,5 @@
 export const environment = {
     apiUrl: '',
     page: 0,
-    size: 10
+    size: 5
 };
