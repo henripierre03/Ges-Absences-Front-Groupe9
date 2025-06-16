@@ -40,6 +40,15 @@ export class AuthentificationService implements IAuthService {
     localStorage.removeItem('user');
   }
   IsAuthenticated(): boolean {
-    return !!this.currentUserSignal();
+    // return !!this.currentUserSignal();
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      const user = JSON.parse(userStr);
+      if (user?.token) {
+        return true;
+      }
+    }
+    return false;
+
   }
 }
