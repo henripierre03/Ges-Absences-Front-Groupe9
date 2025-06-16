@@ -13,7 +13,7 @@ export class AbsenceService {
 
   constructor(private http: HttpClient) {}
 
-  token = JSON.parse(localStorage.getItem('user') || '{}').token;
+  // token = JSON.parse(localStorage.getItem('user') || '{}').token;
 
   // Récupérer toutes les absences pour l'admin
   getAllAbsences(
@@ -23,9 +23,9 @@ export class AbsenceService {
 
     return this.http.get<RestResponse<AbsenceAndEtudiantResponse[]>>(
       `${environment.apiUrl}/web/absence?page=${page}&size=${size}`,
-      {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
-      }
+      // {
+      //   headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
+      // }
     );
   }
 
@@ -33,9 +33,9 @@ export class AbsenceService {
 
     return this.http.get<RestResponse<AbsenceAndEtudiantResponse[]>>(
       `${environment.apiUrl}/web/absence/all`,
-      {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
-      }
+      // {
+      //   headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
+      // }
     );
   }
 
@@ -43,9 +43,9 @@ export class AbsenceService {
   getAbsencesByEtat(etat: string): Observable<AbsenceAndEtudiantResponse[]> {
     return this.http.get<AbsenceAndEtudiantResponse[]>(
       `${environment.apiUrl}/web/absence/?etat=${etat}`,
-      {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
-      }
+      // {
+      //   headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
+      // }
     );
   }
 }

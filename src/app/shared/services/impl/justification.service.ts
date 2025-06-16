@@ -14,14 +14,14 @@ import { RestResponse } from '../../models/rest-response.model';
 export class JustificationService {
   constructor(private http: HttpClient) {}
 
-  token = JSON.parse(localStorage.getItem('user') || '{}').token;
+  // token = JSON.parse(localStorage.getItem('user') || '{}').token;
 
   getJustificationById(id: string): Observable<Justification> {
     return this.http.get<Justification>(
       `${environment.apiUrl}/web/justification/${id}`,
-      {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
-      }
+      // {
+      //   headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
+      // }
     );
   }
 
@@ -30,9 +30,9 @@ export class JustificationService {
     return this.http.put<void>(
       `${environment.apiUrl}/web/justification/${id}`,
       body,
-      {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
-      }
+      // {
+      //   headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
+      // }
     ); // Update the endpoint URL
   }
   invaliderJustification(id: string): Observable<void> {
@@ -40,9 +40,9 @@ export class JustificationService {
     return this.http.put<void>(
       `${environment.apiUrl}/web/justification/${id}`,
       body,
-      {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
-      }
+      // {
+      //   headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
+      // }
     ); // Update the endpoint URL
   }
 
@@ -51,9 +51,9 @@ export class JustificationService {
   ): Observable<RestResponse<JustificationResponse>> {
     return this.http.get<RestResponse<JustificationResponse>>(
       `${environment.apiUrl}/web/justification/absence/${absenceId}`,
-      {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
-      }
+      // {
+      //   headers: new HttpHeaders().set('Authorization', `Bearer ${this.token}`),
+      // }
     );
   }
 }
